@@ -1,0 +1,288 @@
+Building blocks of Angular App
+    1. Components (Data, HTML markup, Logic). Main component is AppComponent
+        @Component decorator
+        ng generate component
+    2. Modules. Main module is AppModule
+        @NgModule decorator
+        ng generate module
+    3. Templates
+        {{ }} - string interpolation
+    4. Directives
+        Structural directive - modifies the structure of DOM
+            *ngFor, *ngIf
+        Attribute directive - modifies the attributes on DOM elements
+    5. Services
+        Why? - Components should only have the presentation logic. Other business logic should be delegated to services
+             - Other components can use the same service if needed
+             - Unit testing become easier using fake api end points
+        Dependency Injction 
+            - constructor(private service: ServiceName)- providing the dependencies of the class into its constructor. 
+            - By specifying the service in providers array
+            - Creates a single instance of the class of the entire module - Singleton pattern
+        @Injectable()
+            - decorator in service is needed if the service needs dependencies in constructor
+            - To tell angular that this service is an injectable class; 
+            - In components @Injectable decorator is added automatically by @Component decorator
+        ng generate service
+
+Displaying Data and Handling events
+Property Binding
+    when angular compile the template, it converts the string interpolation into property binding;
+        <img src={{imgUrl}}/>
+        <h2>{{ title }}</h2>
+    binds the property of DOM elements to a property in the component
+        <img [src]="imgUrl"/>
+    it works only one way - component to the DOM
+Attribute binding
+    <td [attr.colspan]="colSpan"> </td> - to say that we are targeting the colspan attribute of td html element
+Class Binding
+    <button class="btn btn-primary" [class.active]="isActive">Save</button>
+    To dynamically add classes into the DOM
+Style Binding
+    <button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue' : 'white'">Save</button>
+Event Binding 
+    <button class="btn btn-primary" (click)="onSave($event)">Save</button>
+    Event Bubbling - Events in inner html elements are bubbled in the wrapper elements
+        - $event.stopPropogation() - To stop Event Bubbling
+Event Filtering
+    <input (keyup.enter)="onKeyUp($event)" />
+Template Variables
+    <input (keyup.enter)="onKeyUp($event)" />
+    onKeyUp($event){ $event.target.value } - contains the entered value
+    OR
+    <input #email (keyup.enter)="onKeyUp(email.value)" />
+    onKeyUp(email){ email} - contains the entered value
+Two-Way-Binding
+    <input [value]="email  (keyup.enter)="email = $event.target.value; onKeyUp()" />
+    onKeyUp(){ this.email} - contains the entered value
+    OR
+    <input [(ngModel)]="email"  (keyup.enter)="onKeyUp()" />
+    onKeyUp(){ this.email} - contains the entered value
+    ngModule is defined in FormsModule
+Pipes
+    Built-in Pipes
+        Uppercase
+            | uppercase
+        Lowercase
+            | lowercase
+        Decimal
+            | number:'2.2-2'    - 05.45
+        Currency
+            | Currency:'AUD':true:'3.2-2'
+        Date
+            | date:'shortDate'
+        Percent
+            | percent:'4.3-5'
+    
+    Custom Pipes
+        @Pipe decorator
+        implements PipeTransform
+        transform(value:any, args?: any) {}
+
+Building re-usable components
+    <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favourite>
+    Input - Use input property to pass state to a component
+        @Input() isFavorite: boolean  or 
+        @Input('is-favorite') isFavorite: boolean - Use Alias to minimize the impact of name change
+        OR
+        inputs: ['isFavorite']  - using component metadata
+    Output - Use output property to raise a event from the component
+        @Output() change = new EventEmitter() or 
+        @Output('change') change = new EventEmitter() - Use Alias to minimize the impact of name change
+        onClick(){ this.change.emit(this.isFavorite)}  - to notify others that something has happened
+    Input and Output properties of a component together makes the Component API
+
+    Styles
+        3 ways to apply styles to component
+            styleUrls: ['./favorite.component.css']
+            style:[``]
+            <style> </style>  - in template
+        Shadow DOM
+            Allows us to apply scoped styles to elements without bleeding out to the outer world
+            var el = document.querySelector('favorite');
+            var root = el.createShadowRoot();
+            root.innerHTML=`<style>h1 { color:red }</style>`
+            <h1>Hello</h1>
+
+            encapsulation: ViewEncapsulation.Emulated |  ViewEncapsulation.Native | ViewEncapsulation.None
+            Emulated - angular automatically injects a dynamic attribute to do the styling
+            Native - uses shadow dom
+            None - styles will leak
+    ngContent
+        <bootstrap-panel>
+            <div class='heading'></div>
+            <div class='body'>
+                <h2>Body</h2>
+                <p>Some content...</p>
+            </div>
+        </bootstrap-panel>
+        <div class='panel panel-default'>
+            <div class='panel-heading'>
+                <ng-content select=".heading"></ng-content>
+            </div>
+            <div class='panel-body'>
+                <ng-content  select=".body"></ng-content>
+            </div>
+        </div>
+        ng-content will be replaced with the data provided
+        You don't need a selector if you have only one ng-content
+
+    ngContainer
+        <bootstrap-panel>
+            <ng-container class='heading'></ng-container>
+            <ng-container class='body'>
+                <h2>Body</h2>
+                <p>Some content...</p>
+            </ng-container>
+        </bootstrap-panel>
+        <div class='panel panel-default'>
+            <div class='panel-heading'>
+                <ng-content select=".heading"></ng-content>
+            </div>
+            <div class='panel-body'>
+                <ng-content  select=".body"></ng-content>
+            </div>
+        </div>
+        Use ng-container to avoid unnecessary divs in the dom
+
+Directives
+    Structural directive - modifies the structure of DOM
+        *ngIf
+            <div *ngIf='courses.length > 0; then coursesList  else noCourses'></div>
+            <ng-template #coursesList>
+                List of courses
+            </ng-template> 
+            <ng-template #noCourses>
+                No courses yet
+            </ng-template>
+
+            when angular sees the *ngIf it automatically uses the ng-template and apply property binding [ngIf]="" to build template 
+
+        hidden attribute - element is there in the DOM but it is hidden; If building the DOM is constly,do not use ngIf; use hidden attribute
+            <div [hidden]="courses.length==0">
+                List of courses
+            </div [hidden]="courses.length > 0"> 
+            <div>
+                No courses yet
+            </div>
+        ngSwitchCase - To compare a property value with multiple values
+            <ul class="nav nav-pills">
+                <li [class.active]="viewMode == 'map'" ><a (click)="viewMode='map'" >Map View</a></li>
+                <li [class.active]="viewMode == 'list'" ><a (click)="viewMode='list'" >List View</a></li>
+            </ul>
+            <div [ngSwitch]="viewMode">
+                <div *ngSwitchCase="'map'" >Map View Content </div>
+                <div *ngSwitchCase="'list'" >List View Content</div>
+                <div *ngSwitchDefault>Otherwise</div>
+            </div>
+        ngFor
+            <ul>
+                <li *ngFor="let course of courses; index as i"> // index, first, last even, odd
+                   {{ i }} - {{ course.name }}
+                </li>
+            </ul>
+            ngFor - Change Detection
+            by default angular tracks object by memory; it treats as a completely new object even if the content of the object is same thereby rerendering the whole DOM
+            We can change this behaviour and instruct angular to track the object by id 
+            <ul>
+                <li *ngFor="let course of courses; trackBy: trackCourse"> // index, first, last even, odd
+                   {{ course.name }}
+                </li>
+            </ul>
+            trackCourse(index, course){
+                return course ? course.id : undefined
+            }
+            use this feature for performance tuning
+
+    Attribute directive - modifies the attributes on DOM elements
+        ngClass - to avoid using class binding twice
+            <span
+                class= 'glyphicon'
+                [class.glyphicon-star]="isSelected"
+                [class.glyphicon-star-empty]="!isSelected"
+                (click)="onClick()"
+            >
+            </span>
+            OR
+            <span
+                class= 'glyphicon'
+                [ngClass]="{
+                    'glyphicon-star': isSelected,
+                    'glyphicon-star-empty': !isSelected        
+                }"
+                (click)="onClick()"
+            >
+            </span>
+        ngStyle - to avoid using multiple style binding
+            <button
+                [style.backgroundColor]="canSave? 'blue' : 'gray'"
+                [style.color]="canSave? 'white' : 'black'"
+                [style.fontWeight]="canSave? 'bold' : 'normal'"
+            >Save
+            </button>
+            OR
+            <button
+                [ngStyle]="{
+                    'backgroundColor': canSave? 'blue' : 'gray',
+                    'color': canSave? 'white' : 'black',
+                    'fontWeight': canSave? 'bold' : 'normal'
+                }"
+            >Save
+            </button>
+        Safe Traversal
+            <span *ngIf="task.assignee">{{task.assignee.name}}</span>
+            OR
+            <span>{{task.assignee?.name}}</span>
+
+    Creating custom Directives
+        ng generate directive
+        import HostListener
+        @Directive({ selector: '[appInputFormat]'})
+
+        constructor(private el:ElementRef){}
+        @HostListener('focus') onFocus(){}
+        @Input('appInputFormat') format
+        @HostListener('blur') onBlur(){ 
+            let value = this.el.nativeElement.value;
+            if(this.format =='lowecase')
+                this.el.nativeElement.value = value.toLowerCase();
+            else
+                this.el.nativeElement.value = value.toUpperCase();
+
+        }
+        
+        <input type="text" [appInputFormat] ="'uppercase'">
+
+Consuming HTTP Services
+    HttpModule
+
+
+
+
+
+
+
+
+
+Modules
+    An app can be divided into Feature modules and shared modules and core modules
+    A module.ts file contains the @NgModule decorator and the following arrays-
+        declarations- All components
+        providers - All services
+        imports - All dependencies modules
+        exports - All components that are used in a component template outside this module
+    A module directory contains - component, services, directive, models directory and the module.ts file
+    ng g m shared
+    Add the user-defined modules into the AppModules imports array
+    Use the RouterModule.forChild([]) in user-defined modules and  RouterModule.forRoort([]) in AppModule
+    All user-defined module have a dependency to CommonModule
+
+Themes
+    use scss
+
+
+
+Usefull VS code plugins
+    move ts and TypeScript hero
+
+vs code shortcut to order imports ctrl+alt+o
