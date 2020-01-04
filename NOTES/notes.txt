@@ -1,4 +1,5 @@
-Building blocks of Angular App
+3. Angular Fundamentals
+    Building blocks of Angular App
     1. Components (Data, HTML markup, Logic). Main component is AppComponent
         @Component decorator
         ng generate component
@@ -25,61 +26,61 @@ Building blocks of Angular App
             - In components @Injectable decorator is added automatically by @Component decorator
         ng generate service
 
-Displaying Data and Handling events
-Property Binding
-    when angular compile the template, it converts the string interpolation into property binding;
-        <img src={{imgUrl}}/>
-        <h2>{{ title }}</h2>
-    binds the property of DOM elements to a property in the component
-        <img [src]="imgUrl"/>
-    it works only one way - component to the DOM
-Attribute binding
-    <td [attr.colspan]="colSpan"> </td> - to say that we are targeting the colspan attribute of td html element
-Class Binding
-    <button class="btn btn-primary" [class.active]="isActive">Save</button>
-    To dynamically add classes into the DOM
-Style Binding
-    <button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue' : 'white'">Save</button>
-Event Binding 
-    <button class="btn btn-primary" (click)="onSave($event)">Save</button>
-    Event Bubbling - Events in inner html elements are bubbled in the wrapper elements
-        - $event.stopPropogation() - To stop Event Bubbling
-Event Filtering
-    <input (keyup.enter)="onKeyUp($event)" />
-Template Variables
-    <input (keyup.enter)="onKeyUp($event)" />
-    onKeyUp($event){ $event.target.value } - contains the entered value
-    OR
-    <input #email (keyup.enter)="onKeyUp(email.value)" />
-    onKeyUp(email){ email} - contains the entered value
-Two-Way-Binding
-    <input [value]="email  (keyup.enter)="email = $event.target.value; onKeyUp()" />
-    onKeyUp(){ this.email} - contains the entered value
-    OR
-    <input [(ngModel)]="email"  (keyup.enter)="onKeyUp()" />
-    onKeyUp(){ this.email} - contains the entered value
-    ngModule is defined in FormsModule
-Pipes
-    Built-in Pipes
-        Uppercase
-            | uppercase
-        Lowercase
-            | lowercase
-        Decimal
-            | number:'2.2-2'    - 05.45
-        Currency
-            | Currency:'AUD':true:'3.2-2'
-        Date
-            | date:'shortDate'
-        Percent
-            | percent:'4.3-5'
-    
-    Custom Pipes
-        @Pipe decorator
-        implements PipeTransform
-        transform(value:any, args?: any) {}
+4. Displaying Data and Handling events
+    Property Binding
+        when angular compile the template, it converts the string interpolation into property binding;
+            <img src={{imgUrl}}/>
+            <h2>{{ title }}</h2>
+        binds the property of DOM elements to a property in the component
+            <img [src]="imgUrl"/>
+        it works only one way - component to the DOM
+    Attribute binding
+        <td [attr.colspan]="colSpan"> </td> - to say that we are targeting the colspan attribute of td html element
+    Class Binding
+        <button class="btn btn-primary" [class.active]="isActive">Save</button>
+        To dynamically add classes into the DOM
+    Style Binding
+        <button class="btn btn-primary" [style.backgroundColor]="isActive ? 'blue' : 'white'">Save</button>
+    Event Binding 
+        <button class="btn btn-primary" (click)="onSave($event)">Save</button>
+        Event Bubbling - Events in inner html elements are bubbled in the wrapper elements
+            - $event.stopPropogation() - To stop Event Bubbling
+    Event Filtering
+        <input (keyup.enter)="onKeyUp($event)" />
+    Template Variables
+        <input (keyup.enter)="onKeyUp($event)" />
+        onKeyUp($event){ $event.target.value } - contains the entered value
+        OR
+        <input #email (keyup.enter)="onKeyUp(email.value)" />
+        onKeyUp(email){ email} - contains the entered value
+    Two-Way-Binding
+        <input [value]="email  (keyup.enter)="email = $event.target.value; onKeyUp()" />
+        onKeyUp(){ this.email} - contains the entered value
+        OR
+        <input [(ngModel)]="email"  (keyup.enter)="onKeyUp()" />
+        onKeyUp(){ this.email} - contains the entered value
+        ngModule is defined in FormsModule
+    Pipes
+        Built-in Pipes
+            Uppercase
+                | uppercase
+            Lowercase
+                | lowercase
+            Decimal
+                | number:'2.2-2'    - 05.45
+            Currency
+                | Currency:'AUD':true:'3.2-2'
+            Date
+                | date:'shortDate'
+            Percent
+                | percent:'4.3-5'
+        
+        Custom Pipes
+            @Pipe decorator
+            implements PipeTransform
+            transform(value:any, args?: any) {}
 
-Building re-usable components
+5. Building re-usable components
     <favorite [isFavorite]="post.isFavorite" (change)="onFavoriteChange($event)"></favourite>
     Input - Use input property to pass state to a component
         @Input() isFavorite: boolean  or 
@@ -145,7 +146,7 @@ Building re-usable components
         </div>
         Use ng-container to avoid unnecessary divs in the dom
 
-Directives
+6. Directives
     Structural directive - modifies the structure of DOM
         *ngIf
             <div *ngIf='courses.length > 0; then coursesList  else noCourses'></div>
@@ -253,12 +254,47 @@ Directives
         
         <input type="text" [appInputFormat] ="'uppercase'">
 
-Consuming HTTP Services
+9. Consuming HTTP Services
     HttpModule
 
 
+    Handling expected and unexpected errors
+    Throwing application specific errors
+    Optimistic Vs Pessimistic updates
 
+    Observables Vs Promises
+        Observables are lazy (nothing happens until you .subscribe() to them)
+            Reactive programming
+        Promises are eager (action occurs even if .then() is not called)
 
+10. Routing and Navigation
+    path: '**'  - any other routes
+    order of routes matters; more specific routes should be on top
+    routerLink, routerLinkActive
+    Getting Route Params
+        ActivatedRoute
+    Why Route parameters are Observables? - not clear
+        If you want a link in the page and but donot want to navigate away from the page, use
+            ie same component instance but different route parameters
+            we can use Observables to model streams of asynchronous data
+        if you want to stay on the same component and navigate back and forward ie if you don't want the component to reinitialize,
+        we use the snapshot instead of Observables
+        let id = this.route.snapshot.paramMap.get('id)
+        this.route.paramMap.subscribe()
+
+    Route with multiple parameters
+    Query Params
+        this.route.queryParamMap.subscribe()
+        let page = this.route.snapshot.queryParamMap.get('page')
+    Subscribing to multiple Observables ?
+    SwitchMap operator ?
+    Programatic navigation
+        this.router.navigate(['/followers'],)
+11. Authentication and Authorization
+12. Deployment
+16. Redux
+17. Unit testing
+18. Integration Testing 
 
 
 
