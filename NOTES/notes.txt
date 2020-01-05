@@ -291,6 +291,12 @@
     Programatic navigation
         this.router.navigate(['/followers'],)
 11. Authentication and Authorization
+    JWT
+        Header
+        Payload
+        Verify Signature
+        If the payload is changed, signature is regenerated
+
 12. Deployment
 16. Redux
 17. Unit testing
