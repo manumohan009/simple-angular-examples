@@ -6,11 +6,11 @@ import { delay, mergeMap, materialize, dematerialize } from 'rxjs/operators';
 // array in local storage for registered users
 // let users = JSON.parse(localStorage.getItem('users')) || [];
 let users = [{
-    id:1,
-    username:'mosh@domain.com',
-    password:'1234',
-    firstName:'Manu',
-    lastName:'Mohan'
+    id: 1,
+    username: 'mosh@domain.com',
+    password: '1234',
+    firstName: 'Manu',
+    lastName: 'Mohan'
 
 }];
 
@@ -50,10 +50,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // route functions
 
         function register() {
-            const user = body
+            const user = body;
 
             if (users.find(x => x.username === user.username)) {
-                return error('Username "' + user.username + '" is already taken')
+                return error('Username "' + user.username + '" is already taken');
             }
 
             user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
@@ -64,34 +64,37 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function authenticate() {
-            let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vc2ggSGFtZWRhbmkiLCJhZG1pbiI6dHJ1ZX0.iy8az1ZDe-_hS8GLDKsQKgPHvWpHl0zkQBqy1QIPOkA';
+            // tslint:disable-next-line:max-line-length
+            const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ik1vc2ggSGFtZWRhbmkiLCJhZG1pbiI6dHJ1ZX0.iy8az1ZDe-_hS8GLDKsQKgPHvWpHl0zkQBqy1QIPOkA';
+            // tslint:disable-next-line:max-line-length
+            // let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Im1vc2hAZG9tYWluLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsImlhdCI6MTUxNjIzOTAyMn0.vE_gKOIrx2iOhDnMOBhuT4Jpb_xGnrVmgz_WN6eYJ9U';
             const { username, password } = body;
             console.log(username);
             const user = users.find(x => x.username === username && x.password === password);
-            if (!user) return error('Username or password is incorrect');
+            if (!user) { return error('Username or password is incorrect'); }
             return ok({
                 id: user.id,
                 username: user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
-                token: token
-            })
+                token
+            });
         }
 
         function getUsers() {
-            if (!isLoggedIn()) return unauthorized();
+            if (!isLoggedIn()) { return unauthorized(); }
             return ok(users);
         }
 
         function getUserById() {
-            if (!isLoggedIn()) return unauthorized();
+            if (!isLoggedIn()) { return unauthorized(); }
 
-            const user = users.find(x => x.id == idFromUrl());
+            const user = users.find(x => x.id === idFromUrl());
             return ok(user);
         }
 
         function deleteUser() {
-            if (!isLoggedIn()) return unauthorized();
+            if (!isLoggedIn()) { return unauthorized(); }
 
             users = users.filter(x => x.id !== idFromUrl());
             localStorage.setItem('users', JSON.stringify(users));
@@ -101,7 +104,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         // helper functions
 
         function ok(body?) {
-            return of(new HttpResponse({ status: 200, body }))
+            return of(new HttpResponse({ status: 200, body }));
         }
 
         function unauthorized() {
@@ -109,7 +112,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         function error(message) {
-            return throwError({ 
+            return throwError({
                 error: { message },
              });
         }

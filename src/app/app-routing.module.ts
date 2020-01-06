@@ -14,6 +14,8 @@ import { RxjsHttpClientComponent } from './rxjs-example/rxjs-http-client/rxjs-ht
 import { RxjsSimpleExamplesComponent } from './rxjs-example/rxjs-simple-examples/rxjs-simple-examples.component';
 import { AcompComponent } from './rxjs-example/rxjs-data-exchange/acomp/acomp.component';
 import { BcompComponent } from './rxjs-example/rxjs-data-exchange/bcomp/bcomp.component';
+import { AuthGuard } from './authentication/service/auth-guard.service';
+import { AdminAuthGuard } from './authentication/service/admin-auth-guard.service';
 
 
 const routes: Routes = [
@@ -69,7 +71,7 @@ const routes: Routes = [
     component: ConsumeHttpComponent
   },
   // { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'no-access', component: NoAccessComponent },
 ];

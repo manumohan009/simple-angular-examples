@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -13,22 +14,19 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private route: ActivatedRoute ) { }
 
-  // signIn(credentials) {
-  //   this.authService.login(credentials)
-  //     .subscribe(result => {
-  //       if (result && result.token){
-  //         this.invalidLogin = false;
-  //         localStorage.setItem('token', result.token)
-  //         console.log(result)
-  //       }
-  //       else
-  //         this.invalidLogin = true;
-  //     });
-  // }
   signIn(credentials) {
-    this.authService.login(credentials)
+    this.authService.login(credentials).subscribe((result: boolean) => {
+      // this.invalidLogin = ! result;
+      if (result) {
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl')
+        this.router.navigate([returnUrl || '/authentication']);
+      } else {
+        this.invalidLogin = true;
+      }
+    });
   }
 
   ngOnInit() {
