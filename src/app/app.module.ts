@@ -30,6 +30,9 @@ import { RxjsHttpClientComponent } from './rxjs-example/rxjs-http-client/rxjs-ht
 import { RxjsSimpleExamplesComponent } from './rxjs-example/rxjs-simple-examples/rxjs-simple-examples.component';
 import { AcompComponent } from './rxjs-example/rxjs-data-exchange/acomp/acomp.component';
 import { BcompComponent } from './rxjs-example/rxjs-data-exchange/bcomp/bcomp.component';
+import { ReusableExampleComponent } from './reusable-component/reusable-example/reusable-example.component';
+import { FavoriteComponent } from './reusable-component/favorite/favorite.component';
+import { PanelComponent } from './reusable-component/panel/panel.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +63,9 @@ import { BcompComponent } from './rxjs-example/rxjs-data-exchange/bcomp/bcomp.co
     RxjsSimpleExamplesComponent,
     AcompComponent,
     BcompComponent,
+    FavoriteComponent,
+    ReusableExampleComponent,
+    PanelComponent,
 
   ],
   imports: [

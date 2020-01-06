@@ -16,6 +16,7 @@ import { AcompComponent } from './rxjs-example/rxjs-data-exchange/acomp/acomp.co
 import { BcompComponent } from './rxjs-example/rxjs-data-exchange/bcomp/bcomp.component';
 import { AuthGuard } from './authentication/service/auth-guard.service';
 import { AdminAuthGuard } from './authentication/service/admin-auth-guard.service';
+import { ReusableExampleComponent } from './reusable-component/reusable-example/reusable-example.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,11 @@ const routes: Routes = [
   {
     path: 'index',
     component: IndexAppComponent
+
+  },
+  {
+    path: 'reusable-component',
+    component: ReusableExampleComponent
 
   },
   {
