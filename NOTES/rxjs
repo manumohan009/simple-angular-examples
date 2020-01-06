@@ -1,1 +1,15 @@
-Understanding RxJS
+RxJS - What and Why?
+
+  RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback based code
+  Funnel like approach makes it easier to to write structured statements handling asynchronous code and the operators we can use in that funnel to transform the data
+
+
+OBSERVABLES, OBSERVERS & SUBSCRIPTIONS | RxJS TUTORIAL
+  Observables
+    It is a wrapper around some data source (a stream of values)(asynchronous or synchronous data)
+  Observer
+    We want to do something when a new value occurs - That is the job of the observer
+    Observer executes a code whenever we receive a new value, an error, or when done
+    Observer subscribes to a Observable
+    It has 3 methods
+      next(), error(), complete()
