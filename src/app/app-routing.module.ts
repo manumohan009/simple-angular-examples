@@ -17,6 +17,7 @@ import { BcompComponent } from './rxjs-example/rxjs-data-exchange/bcomp/bcomp.co
 import { AuthGuard } from './authentication/service/auth-guard.service';
 import { AdminAuthGuard } from './authentication/service/admin-auth-guard.service';
 import { ReusableExampleComponent } from './reusable-component/reusable-example/reusable-example.component';
+import { DirectivesExampleComponent } from './directives-example/directives-example.component';
 
 
 const routes: Routes = [
@@ -38,6 +39,11 @@ const routes: Routes = [
   {
     path: 'authentication',
     component: HomeComponent
+
+  },
+  {
+    path: 'directives-example',
+    component: DirectivesExampleComponent
 
   },
   {

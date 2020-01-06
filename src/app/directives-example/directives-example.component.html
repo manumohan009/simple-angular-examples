@@ -1,0 +1,83 @@
+<div *ngIf="courses.length>0; then coursesList else noCourses"></div>
+<ng-template #coursesList>
+  List of Courses using *ngIf, *ngFor and ng-template
+  <ul>
+    <li *ngFor="let course of courses">
+      {{course}}
+    </li>
+  </ul>
+</ng-template>
+<ng-template #noCourses>
+  No Courses {{courses[0]}}
+</ng-template>
+--------------------------------------------------------------------------------
+
+
+<div>
+  <div [hidden]='courses.length==0'>
+    <div>List of Courses using hidden propery and *ngFor</div>
+    <div>If building the tree is costly use hidden property</div>
+    <ul>
+      <li  *ngFor="let course of courses; index as i; even as isEven">{{i}}-{{course}}-<span *ngIf='isEven'>EVEN</span></li>
+    </ul>
+  </div>
+</div>
+--------------------------------------------------------------------------------
+
+<div>
+  <div> Example of ngSwitch & *ngSwitchCase</div>
+  <ul class="nav bg-light">
+    <li [class.active]="viewMode=='map'" class="nav-item"><a class="nav-link" (click)="viewMode='map'" >Map View</a></li>
+    <li [class.active]="viewMode=='list'" class="nav-item "><a class="nav-link" (click)="viewMode='list'" >List View</a></li>
+  </ul>
+  <div [ngSwitch]='viewMode'>
+    <div *ngSwitchCase="'map'">Map View Content</div>
+    <div *ngSwitchCase="'list'">List View Content</div>
+    <div *ngSwitchDefault>Otherwise</div>
+  </div>
+</div>
+<br/>
+--------------------------------------------------------------------------------
+
+<div>
+  <button class="btn btn-primary" (click)='loadCourses()'>Load Courses</button>
+  <div>
+    <div>List of Courses with Add and Remove functionality - Arr.indexOf(), Arr.splice(), trackBy, Safe Traversal using obj?.</div>
+    <ul>
+      <li  *ngFor="let course of coursesArr; trackBy: trackCourse">{{course.id}}-{{course?.name}} <button class="btn btn-sm btn-secondary" (click)=onRemove(course)>Remove</button> </li>
+    </ul>
+    <button class="btn btn-primary" (click)='onAdd()'>Add</button>
+  </div>
+</div>
+--------------------------------------------------------------------------------
+<br>
+
+<div>
+  <div>Use ngClass and ngStyle to remove multiple class bindings</div>
+  <span ><i class="fa fa-5x"
+    [ngClass]="{
+      'fa-star': isSelected,
+      'fa-star-o': !isSelected
+    }"
+    (click)='isSelected=!isSelected'
+    [ngStyle]="{
+      'backgroundColor': isSelected ? 'red' : 'blue',
+      'color': isSelected ? 'black' : 'yellow'
+    }"
+    ></i></span>
+</div>
+
+<div>
+  <div>Use ngStyle to remove multiple style bindings</div>
+  <div style="width: 50px; height: 50px; border: 1px solid red;"
+  [ngStyle]="{
+    'backgroundColor': isSelected ? 'red' : 'blue',
+    'color': isSelected ? 'white' : 'yellow'
+  }"
+  ></div>
+</div>
+
+// Custom direactive - Todo
+
+
+

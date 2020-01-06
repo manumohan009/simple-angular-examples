@@ -33,6 +33,7 @@ import { BcompComponent } from './rxjs-example/rxjs-data-exchange/bcomp/bcomp.co
 import { ReusableExampleComponent } from './reusable-component/reusable-example/reusable-example.component';
 import { FavoriteComponent } from './reusable-component/favorite/favorite.component';
 import { PanelComponent } from './reusable-component/panel/panel.component';
+import { DirectivesExampleComponent } from './directives-example/directives-example.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import { PanelComponent } from './reusable-component/panel/panel.component';
     FavoriteComponent,
     ReusableExampleComponent,
     PanelComponent,
+    DirectivesExampleComponent,
 
   ],
   imports: [
