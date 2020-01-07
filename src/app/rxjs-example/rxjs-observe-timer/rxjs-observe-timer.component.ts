@@ -1,10 +1,10 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { timer, of, Observable, throwError  } from 'rxjs';
 
-//Observe Timer Example
+// Observe Timer Example
 const source = timer(1000, 2000);
 
-//Basic Subscribing using Observer
+// Basic Subscribing using Observer
 const myObservable = of('apple', 'orange', 'grappe');
 const myObserver = {
   next: (x: string) => console.log('Observer got a next value: ' + x),
@@ -12,7 +12,7 @@ const myObserver = {
   complete: () => console.log('Observer got a complete notification'),
 };
 
-//Observable with Constructor Example
+// Observable with Constructor Example
 function sequenceSubscriber(observer) {
   observer.next('Apple');
   observer.next('Orange');
@@ -31,14 +31,14 @@ export class RxjsObserveTimerComponent implements OnInit, AfterViewInit {
   constructor() { }
 
   ngOnInit() {
-    //Observe Timer Example
+    // Observe Timer Example
     const subscribe = source.subscribe(val => console.log(val));
     setTimeout(() => { subscribe.unsubscribe(); }, 10000);
 
-    //Basic Subscribing using Observer
+    // Basic Subscribing using Observer
     myObservable.subscribe(myObserver);
 
-    //Observable with Constructor Example
+    // Observable with Constructor Example
     const sequence = new Observable(sequenceSubscriber);
     sequence.subscribe({
       next(msg) { console.log(msg); },
@@ -47,7 +47,7 @@ export class RxjsObserveTimerComponent implements OnInit, AfterViewInit {
 
   }
 
-  //The Observable that Publishes Events Example
+  // The Observable that Publishes Events Example
   ngAfterViewInit() {
     const ESC_KEY = 27;
     const nameInput = document.getElementById('yourname') as HTMLInputElement;

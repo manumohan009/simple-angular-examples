@@ -8,23 +8,23 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class Child1Component implements OnInit {
   public child1Name = 'Manu';
   public msg = 'Hello';
-  public message='Initial value';
+  public message = 'Initial value';
 
   @Input() public messageFromParentToChild1;
   @Input() public messageFromChild2;
 @Output() messageToChild2 = new EventEmitter();
 
-  userName: string = '';
-  userPhone: string = '';
+  userName = '';
+  userPhone = '';
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  sendMessageToChild2(msg){
+  sendMessageToChild2(msg) {
     console.log('In sendMessageToChild2()');
-    console.log(msg,"msg");
+    console.log(msg, 'msg');
     this.messageToChild2.emit(msg);
   }
 
@@ -36,7 +36,7 @@ export class Child1Component implements OnInit {
   //   this.phoneEvent.emit(this.userPhone);
   // }
 
-  sendMessage(){
+  sendMessage() {
     console.log('In sendMessage()');
     this.message = 'Shiva';
   }

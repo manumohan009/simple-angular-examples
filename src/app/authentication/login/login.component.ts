@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(credentials).subscribe((result: boolean) => {
       // this.invalidLogin = ! result;
       if (result) {
-        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl')
+        const returnUrl = this.route.snapshot.queryParamMap.get('returnUrl');
         this.router.navigate([returnUrl || '/authentication']);
       } else {
         this.invalidLogin = true;

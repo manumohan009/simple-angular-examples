@@ -8,28 +8,28 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./my-child2.component.css']
 })
 export class MyChild2Component implements OnInit, OnDestroy {
-  message:string;
-  subscription:Subscription;
-  constructor(private messageService:MessageService) {
+  message: string;
+  subscription: Subscription;
+  constructor(private messageService: MessageService) {
     this.subscription = this.messageService.getMessage().subscribe(message => {
-      if(message != undefined){
-        this.message = message['text'];
+      if (message != undefined) {
+        this.message = message.text;
       }
-    })
+    });
    }
 
   ngOnInit() {
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  sendMessage(){
+  sendMessage() {
     this.messageService.sendMessage('Message update from child 2');
   }
 
-  clearMessage(){
+  clearMessage() {
     this.messageService.clearMessage();
   }
 

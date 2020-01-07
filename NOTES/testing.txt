@@ -1,0 +1,15 @@
+Unit Testing
+  What is Automated Testing ?
+    Practice of writing code to test our code and run those test in an automated fashion
+    It helps you catch defects before releasing your software
+  Types of tests
+    Unit Testing
+      Test a component in isolation, without external resources(eg. filesystem, database, API endpoints)
+      Use Fake service, Fake router etc
+      Easiest to write, super fast, don't give us much confidence
+    Integration Testing
+      Test a component with external resources (eg. filesystem, database, API endpoints)
+    End-to-End Testing
+      Test the entire app as a whole
+  Unit Testing Fundamentals
+

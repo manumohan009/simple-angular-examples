@@ -10,26 +10,26 @@ import { Subscription } from 'rxjs';
 export class MyChild1Component implements OnInit, OnDestroy {
   message;
   subscription: Subscription;
-  constructor(private messageService:MessageService) {
+  constructor(private messageService: MessageService) {
 
    }
 
   ngOnInit() {
     this.subscription = this.messageService.getMessage().subscribe(message => {
-      if(message != undefined){
-        this.message = message['text'];
+      if (message != undefined) {
+        this.message = message.text;
       }
-    })
+    });
   }
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  sendMessage(){
+  sendMessage() {
     this.messageService.sendMessage('Message update from child 1');
   }
 
-  clearMessage(){
+  clearMessage() {
     this.messageService.clearMessage();
   }
 

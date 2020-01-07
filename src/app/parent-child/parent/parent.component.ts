@@ -27,11 +27,11 @@ export class ParentComponent implements OnInit {
   ngOnInit() {
   }
 
-  onReceiveMessageFromChild1(msg){
+  onReceiveMessageFromChild1(msg) {
     this.messageFromChild1 = msg;
   }
 
-  onReceiveMessageFromChild2(msg){
+  onReceiveMessageFromChild2(msg) {
     this.messageFromChild2 = msg;
   }
 

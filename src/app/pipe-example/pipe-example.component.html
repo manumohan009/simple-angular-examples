@@ -1,0 +1,9 @@
+  <div>
+    <div>{{course.title | uppercase | lowercase}}</div>
+    <div>{{course.students | number}}</div>
+    <div>{{course.rating | number:'2.1-1'}}</div>
+    <div>{{course.price | currency:'AUD':true:'3.2-2'}}</div>
+    <div>{{course.releaseDate | date:'short'}}</div><br>
+    <div>Using custom pipe</div>
+    <p>{{text | summary:5 }}</p>
+  </div>

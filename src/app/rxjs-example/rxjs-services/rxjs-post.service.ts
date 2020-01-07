@@ -10,7 +10,7 @@ export class RxjsPostService {
 
   constructor(private http: HttpClient) { }
 
-  private handleError<T> (operation = 'operation', result?: T) {
+  private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
@@ -22,7 +22,7 @@ export class RxjsPostService {
   }
 
   getPosts(): Observable<any[]> {
-    let apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+    const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
     return this.http.get<any[]>(apiUrl)
       .pipe(
         tap(product => console.log('fetched products')),
@@ -31,7 +31,7 @@ export class RxjsPostService {
   }
 
   getPost(id: number): Observable<any> {
-    let apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+    const apiUrl = 'https://jsonplaceholder.typicode.com/posts';
     const url = `${apiUrl}/${id}`;
     return this.http.get<any>(url).pipe(
       tap(_ => console.log(`fetched product id=${id}`)),

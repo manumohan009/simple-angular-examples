@@ -20,9 +20,9 @@ export class Child2Component implements OnInit {
   ngOnInit() {
   }
 
-  sendMessageToChild1(msg){
+  sendMessageToChild1(msg) {
     console.log('In sendMessageToChild1()');
-    console.log(msg,"msg");
+    console.log(msg, 'msg');
     this.messageToParent.emit(msg);
   }
 

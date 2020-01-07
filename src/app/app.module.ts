@@ -35,6 +35,8 @@ import { FavoriteComponent } from './reusable-component/favorite/favorite.compon
 import { PanelComponent } from './reusable-component/panel/panel.component';
 import { DirectivesExampleComponent } from './directives-example/directives-example.component';
 import { InputFormatDirective } from './directives-example/custom-directive/input-format.directive';
+import { PipeExampleComponent } from './pipe-example/pipe-example.component';
+import { SummaryPipe } from './pipe-example/summary.pipe';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { InputFormatDirective } from './directives-example/custom-directive/inpu
     PanelComponent,
     DirectivesExampleComponent,
     InputFormatDirective,
+    PipeExampleComponent,
+    SummaryPipe,
 
   ],
   imports: [

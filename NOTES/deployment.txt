@@ -1,0 +1,47 @@
+Optimization Technics
+  Minification - Removing comments and white spaces
+  Uglification - Renaming long descriptive function names into short names
+  Bundling - Combining multiple js files into one
+  Dead code elimination - removing codes that are not used in the app
+  Ahead-of-time (AOT) compilation - precompiling angular components and templates to improve app performance
+
+
+JIT vs AOT compilation
+  Angular Compiler - takes js code and converts to js code
+  JIT (Just-in-time)
+    Compilation at run-time
+    Need to ship angular compiler; vendor bundle
+  AOT (Ahead-of-time)
+    Compile ahead of time before deploying app
+    Catch template errors earlier
+    Better Security
+  Angular Compiler in action
+    creates a factory file
+  Building Applications with Angular Compilation
+    ng build
+    ng build --prod
+  Environments
+    Development
+    Test
+    Production
+  Adding custom Environments
+    modify the angular.json file
+    ng serve --environment=test
+  Linting with Angular CLI
+    tslint - Linter
+    ng lint --fix
+  Other deployment options
+    Github pages
+    Firebase
+    Heroku
+    Azure
+  Engines
+    specify the node and npm version in package.json
+
+
+
+
+
+
+
+

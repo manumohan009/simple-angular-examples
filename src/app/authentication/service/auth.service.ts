@@ -11,11 +11,11 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  get currentUser(){
+  get currentUser() {
     const token = localStorage.getItem('token');
-    if(!token) return null;
+    if (!token) { return null; }
     const jwtHelper = new JwtHelperService();
-    return jwtHelper.decodeToken(token)
+    return jwtHelper.decodeToken(token);
   }
   login(credentials) {
     return this.http.post('/api/authenticate', credentials).pipe(

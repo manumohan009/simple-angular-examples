@@ -152,7 +152,7 @@ observable1.pipe(
 
     // --------------- end switchMap() ---------------------------------------
     // --------------- behaviourSubject() ---------------------------------------
-/* 
+/*
   let clickEmitted = new BehaviorSubject('Not clicked');
   let button = document.querySelector('button');
   let span = document.querySelector('span');

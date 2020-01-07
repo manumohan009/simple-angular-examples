@@ -14,20 +14,20 @@ export class RxjsHttpClientComponent implements OnInit {
 
   ngOnInit() {
     this.rxjsPostService.getPosts()
-      .subscribe((res: any)=>{
+      .subscribe((res: any) => {
         this.posts = res;
-        console.log(this.posts)
-      }, err =>{
-        console.log(err)
+        console.log(this.posts);
+      }, err => {
+        console.log(err);
       });
 
     this.rxjsPostService.getPost(1)
-      .subscribe((res: any)=>{
+      .subscribe((res: any) => {
         this.post = res;
-        console.log(this.post)
-      }, err =>{
-        console.log(err)
-      })
+        console.log(this.post);
+      }, err => {
+        console.log(err);
+      });
   }
 
 }

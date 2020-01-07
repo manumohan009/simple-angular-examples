@@ -10,21 +10,21 @@ import { Product } from '../product';
 })
 export class HttpClientComponent implements OnInit, OnDestroy {
   private productDataSubscription: Subscription;
-  productsData:Product[] = [];
+  productsData: Product[] = [];
 
   constructor(private productDataService: ProductDataService) { }
 
   ngOnInit() {
     this.productDataSubscription = this.productDataService.getAllProducts().subscribe(response => {
       console.log(response);
-      if(response.status ==='SUCCESS'){
+      if (response.status === 'SUCCESS') {
         this.productsData = response.data;
       }
-    })
+    });
   }
 
   ngOnDestroy(): void {
-    if(this.productDataSubscription){
+    if (this.productDataSubscription) {
       this.productDataSubscription.unsubscribe();
     }
   }

@@ -18,6 +18,7 @@ import { AuthGuard } from './authentication/service/auth-guard.service';
 import { AdminAuthGuard } from './authentication/service/admin-auth-guard.service';
 import { ReusableExampleComponent } from './reusable-component/reusable-example/reusable-example.component';
 import { DirectivesExampleComponent } from './directives-example/directives-example.component';
+import { PipeExampleComponent } from './pipe-example/pipe-example.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,11 @@ const routes: Routes = [
   {
     path: 'index',
     component: IndexAppComponent
+
+  },
+  {
+    path: 'pipe-example',
+    component: PipeExampleComponent
 
   },
   {

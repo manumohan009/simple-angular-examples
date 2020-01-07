@@ -15,16 +15,16 @@ export class MyHomeComponent implements OnInit, OnDestroy  {
   constructor(private messageService: MessageService) {
     this.subscription = this.messageService.getMessage().subscribe( message => {
       console.log(message);
-      if(message != undefined){
-        this.message = message['text'];
+      if (message != undefined) {
+        this.message = message.text;
       }
-    })
+    });
    }
 
   ngOnInit() {
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

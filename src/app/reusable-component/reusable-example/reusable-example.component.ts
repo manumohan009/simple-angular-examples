@@ -9,13 +9,13 @@ export class ReusableExampleComponent implements OnInit {
 
   post = {
     isFavorite: true
-  }
+  };
   constructor() { }
 
   ngOnInit() {
   }
-  onFavoriteChanged(isFavorite){
-    console.log('Favorite changed', isFavorite)
+  onFavoriteChanged(isFavorite) {
+    console.log('Favorite changed', isFavorite);
   }
 
 }

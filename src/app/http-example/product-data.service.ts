@@ -8,17 +8,17 @@ const httpOptions = {
   headers: new HttpHeaders({
     // 'Content-Type':'application/json'
   })
-}
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductDataService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  getAllProducts():Observable<any>{
-    let url = Constants.BASE_URL + 'api/products';
+  getAllProducts(): Observable<any> {
+    const url = Constants.BASE_URL + 'api/products';
     console.log('url', url);
     return this.http.get(url, httpOptions);
   }
