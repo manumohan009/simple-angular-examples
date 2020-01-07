@@ -19,6 +19,7 @@ import { AdminAuthGuard } from './authentication/service/admin-auth-guard.servic
 import { ReusableExampleComponent } from './reusable-component/reusable-example/reusable-example.component';
 import { DirectivesExampleComponent } from './directives-example/directives-example.component';
 import { PipeExampleComponent } from './pipe-example/pipe-example.component';
+import { ScoreCounterNoNgrxComponent } from './score-counter/score-counter-no-ngrx/score-counter-no-ngrx.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'index',
     component: IndexAppComponent
+
+  },
+  {
+    path: 'score-counter-app',
+    component: ScoreCounterNoNgrxComponent
 
   },
   {

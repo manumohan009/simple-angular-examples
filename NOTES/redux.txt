@@ -1,0 +1,37 @@
+Redux
+  What is Redux?
+    A library that helps you manage the state of your application
+    Uses the Flux architecture
+    Benefits
+      Manage the application state in a predicatable way.
+      Decoupled architecture - decouples the app from a presentation framework like angular
+      Makes it easier to unit test the application
+      Great Tool - Redux developer tool extension in browsers
+      Makes it easy to make features like undo and redo
+    When to use Redux?
+      Independent copies of the same data in multiple places
+      Multiple views that need to work with the same data and be in sync
+      Data can be updated my multiple users
+      Data can be updated by multiple actors
+  Building Blocks of Redux
+    Store
+      A single JS object that contains the state of the application
+    Actions
+      Plan JS objects that represent something that has happened in the application
+    Reducers
+      A function that specifies how the state changes in response to action
+      A reducer does not modify the state. It returns the new state. The store will internally update the state
+  Pure Functions
+    If you give same input it always gives the same output
+    NO side effects
+    Donot mutate the arguments
+    Reducers should be pure functions
+    Benefits
+      Easy testability
+      Easy undo/redo (as we always have the previous state)
+      Time travel debugging
+  Installing Redux
+
+
+
+

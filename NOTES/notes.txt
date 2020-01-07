@@ -297,12 +297,14 @@
         Verify Signature
         If the payload is changed, signature is regenerated
     CanActivate Interface for AuthGuard
-    
 
-12. Deployment
+
+
 16. Redux
-17. Unit testing
-18. Integration Testing
+14 Animation
+15 Angular Material 2
+
+
 
 
 

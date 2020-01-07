@@ -1,8 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +36,8 @@ import { DirectivesExampleComponent } from './directives-example/directives-exam
 import { InputFormatDirective } from './directives-example/custom-directive/input-format.directive';
 import { PipeExampleComponent } from './pipe-example/pipe-example.component';
 import { SummaryPipe } from './pipe-example/summary.pipe';
+import { ScoreCounterNoNgrxComponent } from './score-counter/score-counter-no-ngrx/score-counter-no-ngrx.component';
+import { CounterModule } from './score-counter/counter/counter.module';
 
 @NgModule({
   declarations: [
@@ -74,20 +75,22 @@ import { SummaryPipe } from './pipe-example/summary.pipe';
     InputFormatDirective,
     PipeExampleComponent,
     SummaryPipe,
-
+    ScoreCounterNoNgrxComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    CounterModule
   ],
   providers: [
     AuthService,
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    fakeBackendProvider,
+    fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
