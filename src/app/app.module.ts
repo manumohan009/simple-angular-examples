@@ -34,6 +34,7 @@ import { ReusableExampleComponent } from './reusable-component/reusable-example/
 import { FavoriteComponent } from './reusable-component/favorite/favorite.component';
 import { PanelComponent } from './reusable-component/panel/panel.component';
 import { DirectivesExampleComponent } from './directives-example/directives-example.component';
+import { InputFormatDirective } from './directives-example/custom-directive/input-format.directive';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { DirectivesExampleComponent } from './directives-example/directives-exam
     ReusableExampleComponent,
     PanelComponent,
     DirectivesExampleComponent,
+    InputFormatDirective,
 
   ],
   imports: [
