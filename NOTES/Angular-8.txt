@@ -1,0 +1,61 @@
+Anguar 6
+  1. Synchronizes the major version number - version 6 - Angular Framework, Angular CLI, Angular Material + cdk
+  2. Animations - import from @angular/animations instead of @angular/core
+  3. Template tag - <ng-template> instead of <template>
+  4. Registering Providers - providedIn: 'root' instead of providers: []
+  5. ngModelChange='onChange($event)'
+  6. Angular CLI - new commands Added
+    ng update <package> -
+      analyse package.json and recomment updates to app
+      3rd parties can provide update scripts using schematics; thereby automatically update your code
+    ng add
+      add new capabilities to app - eg ng add @angular/material
+  7.CLI + Material starter templates
+    Material Sidenav
+      ng generate @angular/material: material-nav --name=my-nav
+      ng generate @angular/material: material-dashboard --name=my-dashboard
+      ng generate @angular/material: material-table --name=my-table
+  8. Supports workspaces for multiple projects
+      angular.json instead of .angular-cli.json
+  9. Angular Elements
+      Ability to use Angular components in other environments like vue.js app
+      Wrap an angular component in custom element
+  10 rxjs version 6 breaking changes
+
+
+
+
+Anguar 7
+  1. Improved CLI with prompt
+  2. Angular material and component dev kit (cdk)
+  3. Drag & Drop
+  4. Virtual Scrolling
+  5. Performance improvement
+  6. Dependency update
+  7. Typescript 3.1 support
+  8. RxJS 6.3
+  9. Added support for Node v10
+  10. Angular Do-Bootstrap - a new lifecycle hook (ngDoBootstrap)
+  11. Angular Compatibility Compiler (ngcc)
+    modified version of node_modules
+  12. Better Error Handling - @Output
+
+Angular 8 - What's New? What changed?
+  1. Experimental support for Ivy
+    Ivy is the new internal rendering engine which should drastically shrink bundle size
+    Not yet ready for production
+  2. Experimental support for Bazel
+    Bazel is a build tool used internally by Google which is now open sourced
+    Orchestrates build process (Webpack, Typescript etc) to optimize overall build flow and speed
+    Not fully finished/ tested yet
+  3. Differential Loading
+    CLI automatically creates multiple production bundles for modern and legacy browsers
+    A script automatically detects the browser and load the contents accordingly
+    Decrease bundle size for modern browsers (7-20%)
+  4.@angular/http is no longer supported; instead use @angular/common/http to use HttpClient
+  5. @ViewChild('serverContentInput', {static: false }) serverContentInput: ElementRef
+
+Angular 9
+  Stable support for Bazel
+  Stable support for Ivy
+  Future Ivy API

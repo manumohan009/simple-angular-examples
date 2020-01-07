@@ -1,0 +1,4 @@
+What is Angular?
+  Angular is a TypeScript-based open-source web application framework,
+  developed and maintained by Google. It offers an easy and powerful way of building front end web-based applications.
+
