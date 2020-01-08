@@ -1,0 +1,49 @@
+Shadow DOM
+  It is a separate DOM tree of elements that you can create which is not the part of the main DOM.
+  When you render it behaves like it is part of the main DOM
+  Creating a shadow DOM
+    var host = document.querySelector('#shadowHost')
+    var shadowRoot = host.createShadowRoot();
+
+
+CSS units - rem, em, vh, wh
+  pixels are fixed units. 12 px always 12px no matter what
+  rem and em are relative and difference is what they are relative to
+    both are relative to font sizes
+    rem
+      is always relative to root element html
+      if you change the default font size (16px by default) in browser settings, it is reflected; if we use px instead, browser settings has no effect;
+      by default 1 rem = 16px
+      font-size: 1rem = 1 x font-size specified on the html element
+
+    em
+      is always relative to parent element
+      browser settings has effect on this too
+
+    vh - viewport height
+      is always relative to the browser height
+      50vh - 50% of browser height
+    wh - viewport width
+      is always relative to the browser width
+      50vh - 50% of browser width
+
+
+Adaptive design and Responsive design
+Adaptive design
+  content follows a fixed layout size in adaptive design
+  adaptive design uses a few fixed layouts, and then selects the best layout for the current screen size
+  developing six designs for the six most common screen widths—320, 480, 760, 960, 1200, and 1600 pixels—is standard practice for designers
+Responsive design
+  it moves dynamically in responsive design
+  responsive design uses a single layout, which resizes according to the screen size
+
+The Three Major Principles of Responsive Design
+  Fluid Grid Systems
+  Fluid Image Use
+  Media Queries
+
+set the viewport of your page
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+mobile first
+   the experience is defined on mobile platforms such as smartphones and tablets and then scaled up to larger screens

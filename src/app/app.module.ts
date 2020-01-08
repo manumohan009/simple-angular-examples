@@ -15,14 +15,8 @@ import { AuthService } from './authentication/service/auth.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { MyRxjsComponent } from './rxjs-example/my-rxjs/my-rxjs.component';
 import { HttpClientComponent } from './http-example/http-client/http-client.component';
-import { ParentComponent } from './parent-child/parent/parent.component';
-import { MyHomeComponent } from './shared-service/my-home/my-home.component';
 import { ConsumeHttpComponent } from './consume-http/consume-http.component';
 import { ProductsComponent } from './products/products.component';
-import { Child1Component } from './parent-child/child1/child1.component';
-import { Child2Component } from './parent-child/child2/child2.component';
-import { MyChild1Component } from './shared-service/my-child1/my-child1.component';
-import { MyChild2Component } from './shared-service/my-child2/my-child2.component';
 import { IndexAppComponent } from './index-app/index-app.component';
 import { RxjsObserveTimerComponent } from './rxjs-example/rxjs-observe-timer/rxjs-observe-timer.component';
 import { RxjsHttpClientComponent } from './rxjs-example/rxjs-http-client/rxjs-http-client.component';
@@ -32,10 +26,6 @@ import { BcompComponent } from './rxjs-example/rxjs-data-exchange/bcomp/bcomp.co
 import { ReusableExampleComponent } from './reusable-component/reusable-example/reusable-example.component';
 import { FavoriteComponent } from './reusable-component/favorite/favorite.component';
 import { PanelComponent } from './reusable-component/panel/panel.component';
-import { DirectivesExampleComponent } from './directives-example/directives-example.component';
-import { InputFormatDirective } from './directives-example/custom-directive/input-format.directive';
-import { PipeExampleComponent } from './pipe-example/pipe-example.component';
-import { SummaryPipe } from './pipe-example/summary.pipe';
 import { ScoreCounterNoNgrxComponent } from './score-counter/score-counter-no-ngrx/score-counter-no-ngrx.component';
 import { CounterModule } from './score-counter/counter/counter.module';
 
@@ -49,18 +39,10 @@ import { CounterModule } from './score-counter/counter/counter.module';
     NotFoundComponent,
     MyRxjsComponent,
     HttpClientComponent,
-    ParentComponent,
-    MyHomeComponent,
     AppComponent,
     HomeComponent,
     ConsumeHttpComponent,
     ProductsComponent,
-    ParentComponent,
-    Child1Component,
-    Child2Component,
-    MyHomeComponent,
-    MyChild1Component,
-    MyChild2Component,
     HttpClientComponent,
     IndexAppComponent,
     RxjsObserveTimerComponent,
@@ -71,10 +53,6 @@ import { CounterModule } from './score-counter/counter/counter.module';
     FavoriteComponent,
     ReusableExampleComponent,
     PanelComponent,
-    DirectivesExampleComponent,
-    InputFormatDirective,
-    PipeExampleComponent,
-    SummaryPipe,
     ScoreCounterNoNgrxComponent
   ],
   imports: [

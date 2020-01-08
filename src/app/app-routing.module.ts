@@ -6,8 +6,6 @@ import { LoginComponent } from './authentication/login/login.component';
 import { NoAccessComponent } from './no-access/no-access.component';
 import { MyRxjsComponent } from './rxjs-example/my-rxjs/my-rxjs.component';
 import { HttpClientComponent } from './http-example/http-client/http-client.component';
-import { MyHomeComponent } from './shared-service/my-home/my-home.component';
-import { ParentComponent } from './parent-child/parent/parent.component';
 import { IndexAppComponent } from './index-app/index-app.component';
 import { ConsumeHttpComponent } from './consume-http/consume-http.component';
 import { RxjsHttpClientComponent } from './rxjs-example/rxjs-http-client/rxjs-http-client.component';
@@ -17,16 +15,17 @@ import { BcompComponent } from './rxjs-example/rxjs-data-exchange/bcomp/bcomp.co
 import { AuthGuard } from './authentication/service/auth-guard.service';
 import { AdminAuthGuard } from './authentication/service/admin-auth-guard.service';
 import { ReusableExampleComponent } from './reusable-component/reusable-example/reusable-example.component';
-import { DirectivesExampleComponent } from './directives-example/directives-example.component';
-import { PipeExampleComponent } from './pipe-example/pipe-example.component';
 import { ScoreCounterNoNgrxComponent } from './score-counter/score-counter-no-ngrx/score-counter-no-ngrx.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/index',
-		pathMatch: 'full'
+    component: IndexAppComponent
+  },
+  {
+    path: 'basics',
+    loadChildren: './basics/basics.module#BasicsModule'
   },
   {
     path: 'index',
@@ -39,11 +38,6 @@ const routes: Routes = [
 
   },
   {
-    path: 'pipe-example',
-    component: PipeExampleComponent
-
-  },
-  {
     path: 'reusable-component',
     component: ReusableExampleComponent
 
@@ -52,19 +46,6 @@ const routes: Routes = [
     path: 'authentication',
     component: HomeComponent
 
-  },
-  {
-    path: 'directives-example',
-    component: DirectivesExampleComponent
-
-  },
-  {
-    path: 'parent',
-    component: ParentComponent
-  },
-  {
-    path: 'shared-service',
-    component: MyHomeComponent
   },
   {
     path: 'http-example',
@@ -95,9 +76,23 @@ const routes: Routes = [
     component: ConsumeHttpComponent
   },
   // { path: '', component: HomeComponent },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard, AdminAuthGuard] },
-  { path: 'login', component: LoginComponent },
-  { path: 'no-access', component: NoAccessComponent },
+  {
+    path: 'admin', component: AdminComponent,
+    canActivate: [AuthGuard, AdminAuthGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'no-access',
+    component: NoAccessComponent
+  },
+  {
+    path: '**',
+    redirectTo: '/index',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

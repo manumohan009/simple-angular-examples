@@ -59,3 +59,28 @@ Angular 9
   Stable support for Bazel
   Stable support for Ivy
   Future Ivy API
+
+
+Change detection mechanism in Angular
+  is the magical part of Angular that makes data binding 'just work'
+  is a very handy feature that helps a lot, but it can also work against you
+  is strongly related to Anguar application performance
+
+  Component Tree
+  Component Change Detector Tree
+  Angular keeps a change detector for each component
+  detectChanged()
+    Called when an event has occured and bindings should be checked
+  per default, each change in the app leads to
+    A single CD cycle
+    From top to bottom(all components)
+    Unidirectional(no cycles allowed)
+
+  First findings
+    Reduce duration of a change detection cycle
+      Reduce amount of bindings(eg grids: virtual scrolling via CDK)
+      Avoid bindings to (computationaly intensive) getters or function
+  Profiling
+
+  zone.js
+    gives the execution context
