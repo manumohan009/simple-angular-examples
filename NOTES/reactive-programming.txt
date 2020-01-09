@@ -1,0 +1,44 @@
+Reactive Programming
+  Reactive Programming is programming with asynchronous data streams
+  In computing, reactive programming is a declarative programming paradigm concerned with data streams and the propagation of change.
+  RxJS is a popular library among web developers. It provides functional and reactive programming patterns for working with events
+   and streams of data and has been integrated in many web development libraries and frameworks such as Angular
+  RxJS makes it easy for JavaScript developers to write asynchronous code using composable Observables instead of callbacks and Promises
+  Observables are implemented in the ReactiveX project which has implementations in various languages. RxJS is the JavaScript implementation.
+
+  The observer pattern is a software design pattern in which an object, called the subject, maintains a list of its dependents, called observers,
+   and notifies them automatically of any state changes, usually by calling one of their methods. Observer pattern.
+
+RxJS Operators
+  tap(),
+  map(),
+  filter(),
+  concat(),
+  share(),
+  retry(),
+  catchError(),
+  switchMap(),
+  and flatMap() etc
+
+pipe()
+  You can use the pipe() function/method to combine multiple Operators
+
+    import { filter, map } from 'rxjs/operators';
+    const squareOf2 = of(1, 2, 3, 4, 5,6)
+    .pipe(
+      filter(num => num % 2 === 0),
+      map(num => num * num)
+    );
+    squareOf2.subscribe( (num) => console.log(num));
+
+  The of() method will create and return an Observable from the 1, 2, 3, 4, 5,6 numbers and the pipe() method will apply the filter() and map() operators on each emitted value.
+
+map()
+  The map() operator is similar to the Array.map() method. It lets you map observable responses to other values.
+
+    import { Observable} from 'rxjs';
+    import { map } from 'rxjs/operators';
+    getItems(): Observable> {
+      return this.aService.getItems().pipe(map(response => response.data));
+    }
+
