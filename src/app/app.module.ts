@@ -53,7 +53,7 @@ import { CounterModule } from './score-counter/counter/counter.module';
     FavoriteComponent,
     ReusableExampleComponent,
     PanelComponent,
-    ScoreCounterNoNgrxComponent
+    ScoreCounterNoNgrxComponent,
   ],
   imports: [
     BrowserModule,

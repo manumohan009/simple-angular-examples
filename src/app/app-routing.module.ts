@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: './basics/basics.module#BasicsModule'
   },
   {
+    path: 'advanced',
+    loadChildren: './advanced/advanced.module#AdvancedModule'
+  },
+  {
     path: 'index',
     component: IndexAppComponent
 
