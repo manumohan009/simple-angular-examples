@@ -55,10 +55,23 @@ Angular 8 - What's New? What changed?
   4.@angular/http is no longer supported; instead use @angular/common/http to use HttpClient
   5. @ViewChild('serverContentInput', {static: false }) serverContentInput: ElementRef
 
-Angular 9
-  Stable support for Bazel
-  Stable support for Ivy
-  Future Ivy API
+Angular 9 - What's New ? What changed ?
+  1. Ivy - Under-the-hood change
+    Ivy is the new view rendering engine
+    Smaller bundles
+  2. ng serve - build the app for development
+    will use aot compilation by default (before it was JIT)
+    will catch few more errors
+    can change how the templates are checked: basic, full, strict mode
+      can use strict type check
+        angularCompilerOptions:{
+          "strictTemplates": true
+        }
+  3. Minor breaking changes in deprecations
+  4. @ViewChild() - no need to use the option { static : false}
+    if you want to use the element inside ngOnInit(), (before change detection ran) you should use {static: true}
+
+
 
 
 Change detection mechanism in Angular
